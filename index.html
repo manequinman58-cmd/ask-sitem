@@ -1,29 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sana Bir Mesajım Var ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       background: linear-gradient(135deg, #ff5f6d, #ffc371);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: #fff;
     }
     .card {
-      background: rgba(255,255,255,0.15);
-      padding: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
       border-radius: 20px;
+      padding: 30px;
+      max-width: 420px;
       text-align: center;
-      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
     h1 {
       font-size: 28px;
+      margin-bottom: 15px;
     }
     p {
       font-size: 18px;
@@ -31,12 +35,17 @@
     }
     .heart {
       font-size: 40px;
-      margin: 20px 0;
       animation: beat 1.2s infinite;
+      margin: 20px 0;
     }
     @keyframes beat {
-      0%,100% { transform: scale(1); }
+      0%, 100% { transform: scale(1); }
       50% { transform: scale(1.2); }
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.9;
     }
   </style>
 </head>
@@ -44,16 +53,21 @@
   <div class="card">
     <h1>Canım ❤️</h1>
     <p>
-      Bu sayfayı sana özel hazırladım.<br>
-      Gülüşün günümü aydınlatıyor,<br>
+      Bu sayfayı sana özel hazırladım. <br />
+      Gülüşün günümü aydınlatıyor, <br />
       varlığın bana huzur veriyor.
     </p>
     <div class="heart">💖</div>
     <p>
-      Seni çok seviyorum.<br>
+      Seninle geçen her an benim için çok kıymetli. <br />
       İyi ki varsın, iyi ki benimlesin.
     </p>
-    <p><strong>— Muhammed</strong></p>
+    <footer>
+      Seni çok seven<br />
+      <strong>— Muhammed</strong>
+    </footer>
   </div>
+    <!-- Müzik: Benimle Kayboldun (YouTube embed) -->
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&loop=1&playlist=VIDEO_ID" title="Benimle Kayboldun" frameborder="0" allow="autoplay"></iframe>
 </body>
 </html>
