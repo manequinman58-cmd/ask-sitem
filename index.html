@@ -62,49 +62,33 @@
     <p><strong>— Muhammed</strong></p>
   </div>
 
-  <!-- GARANTİ ÇALIŞAN KEMAN MÜZİĞİ -->
-      <!-- SAMSUNG S22 İÇİN %100 ÇALIŞAN YÖNTEM: YOUTUBE ARKA PLAN SES -->
-  <div id="ytPlayer"></div>
+  <!-- GARANTİ KEMAN MÜZİĞİ -->
+<audio id="bgMusic" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c8c8b5f2a_960.mp3" type="audio/mpeg">
+  Tarayıcınız müzik çalmayı desteklemiyor.
+</audio>
 
-  <button id="musicBtn" onclick="toggleYT()" style="position:fixed;bottom:20px;right:20px;padding:14px 20px;border:none;border-radius:30px;background:#ffffffee;color:#ff5f6d;font-size:15px;box-shadow:0 5px 15px rgba(0,0,0,0.25);">
-    🎻 Müziği Başlat
-  </button>
+<button id="musicBtn" onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;padding:14px 20px;border:none;border-radius:30px;background:#ffffffee;color:#ff5f6d;font-size:15px;box-shadow:0 5px 15px rgba(0,0,0,0.25);">
+  🎻 Müziği Başlat
+</button>
 
-  <script>
-    let player;
-    let playing = false;
+<script>
+const music = document.getElementById('bgMusic');
+const btn = document.getElementById('musicBtn');
+let playing = false;
 
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('ytPlayer', {
-        height: '0',
-        width: '0',
-        videoId: 'lJIrF4YjHfQ', // aşk temalı keman
-        playerVars: {
-          autoplay: 0,
-          controls: 0,
-          loop: 1,
-          playlist: 'lJIrF4YjHfQ'
-        }
-      });
-    }
-
-    function toggleYT() {
-      const btn = document.getElementById('musicBtn');
-      if (!playing) {
-        player.playVideo();
-        btn.innerText = '⏸️ Müziği Durdur';
-        playing = true;
-      } else {
-        player.pauseVideo();
-        btn.innerText = '🎻 Müziği Başlat';
-        playing = false;
-      }
-    }
-
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.body.appendChild(tag);
-  </script>
-
-</body>
-</html>
+function toggleMusic() {
+  if (!playing) {
+    music.play().then(() => {
+      btn.innerText = '⏸️ Müziği Durdur';
+      playing = true;
+    }).catch(() => {
+      alert('Müzik başlatılamadı. Sayfaya tekrar dokunun.');
+    });
+  } else {
+    music.pause();
+    btn.innerText = '🎻 Müziği Başlat';
+    playing = false;
+  }
+}
+</script>
