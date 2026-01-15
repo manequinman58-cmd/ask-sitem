@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> minnosuma sürprizz❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sana Bir Mesajım Var ❤️</title>
   <style>
     body {
       margin: 0;
@@ -16,7 +16,7 @@
       color: #fff;
     }
     .card {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(10px);
       border-radius: 20px;
       padding: 30px;
@@ -24,55 +24,68 @@
       text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-    .heart {
-      font-size: 40px;
-      animation: beat 1.2s infinite;
-      margin: 20px 0;
-    }
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-    footer {
-      margin-top: 20px;
-      font-size: 14px;
-      opacity: 0.9;
+    h1 { font-size: 28px; }
+    p { font-size: 18px; line-height: 1.6; }
+    .heart { font-size: 40px; animation: beat 1.2s infinite; margin: 20px 0; }
+    @keyframes beat { 0%,100%{transform:scale(1);} 50%{transform:scale(1.2);} }
+    #musicBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 30px;
+      background: #ffffffee;
+      color: #ff5f6d;
+      font-size: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
     }
   </style>
 </head>
 <body>
+
   <div class="card">
     <h1>Canım ❤️</h1>
     <p>
-      Bu sayfayı sana özel hazırladım. <br />
-      Gülüşün günümü aydınlatıyor, <br />
+      Bu sayfayı sana özel hazırladım.<br>
+      Gülüşün günümü aydınlatıyor,<br>
       varlığın bana huzur veriyor.
     </p>
     <div class="heart">💖</div>
     <p>
-      Seninle geçen her an benim için çok kıymetli. <br />
+      Seni çok seviyorum.<br>
       İyi ki varsın, iyi ki benimlesin.
     </p>
-    <footer>
-      Seni çok seven<br />
-      <strong>— Muhammed</strong>
-    </footer>
+    <p><strong>— Muhammed</strong></p>
   </div>
-    <!-- Müzik: Benimle Kayboldun (YouTube embed) -->
-    <!-- Arka plan müziği: Aşk temalı keman (telif sorunsuz) -->
-    <!-- Arka plan müziği: Aşk temalı keman (buton ile kontrol) -->
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c8c8b5f2a.mp3" type="audio/mpeg">
+
+  <!-- GARANTİ ÇALIŞAN KEMAN MÜZİĞİ -->
+  <audio id="bgMusic" preload="auto">
+    <source src="https://cdn.pixabay.com/audio/2022/10/11/audio_2b1a6f0c0d.mp3" type="audio/mpeg">
   </audio>
 
-  <button id="musicBtn" onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;padding:12px 18px;border:none;border-radius:30px;background:#ffffffcc;c
+  <button id="musicBtn" onclick="toggleMusic()">🎵 Müziği Başlat</button>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicBtn');
+    let playing = false;
+
+    function toggleMusic() {
+      if (!playing) {
+        music.play().then(() => {
+          btn.innerText = '⏸️ Müziği Durdur';
+          playing = true;
+        }).catch(() => {
+          alert('Müzik başlatılamadı. Lütfen tekrar dokunun.');
+        });
+      } else {
+        music.pause();
+        btn.innerText = '🎵 Müziği Başlat';
+        playing = false;
+      }
+    }
+  </script>
+
 </body>
 </html>
