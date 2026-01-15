@@ -55,40 +55,35 @@
     <p>
       Seni çok seviyorum.<br>
       İyi ki varsın, iyi ki benimlesin.
-      MİN MİN MİNNNNNNNNOOSSSS
-      MINNNOAASSSS
-      MINNNOSUM BENIMMMM IYI UYKULAAAARRR
     </p>
     <p><strong>— Muhammed</strong></p>
   </div>
 
-  <!-- GARANTİ KEMAN MÜZİĞİ -->
-<audio id="bgMusic" preload="auto">
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c8c8b5f2a_960.mp3" type="audio/mpeg">
-  Tarayıcınız müzik çalmayı desteklemiyor.
-</audio>
+  <!-- GARANTİ ÇALIŞAN KEMAN MÜZİĞİ -->
+  <button id="musicBtn">🎻 Müziği Başlat</button>
 
-<button id="musicBtn" onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;padding:14px 20px;border:none;border-radius:30px;background:#ffffffee;color:#ff5f6d;font-size:15px;box-shadow:0 5px 15px rgba(0,0,0,0.25);">
-  🎻 Müziği Başlat
-</button>
+  <script>
+    let playing = false;
+    let music;
 
-<script>
-const music = document.getElementById('bgMusic');
-const btn = document.getElementById('musicBtn');
-let playing = false;
+    const btn = document.getElementById('musicBtn');
 
-function toggleMusic() {
-  if (!playing) {
-    music.play().then(() => {
-      btn.innerText = '⏸️ Müziği Durdur';
-      playing = true;
-    }).catch(() => {
-      alert('Müzik başlatılamadı. Sayfaya tekrar dokunun.');
+    btn.addEventListener('click', () => {
+      if (!playing) {
+        music = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c8c8b5f2a_960.mp3');
+        music.loop = true;
+        music.volume = 0.8;
+        music.play();
+        btn.innerText = '⏸️ Müziği Durdur';
+        playing = true;
+      } else {
+        music.pause();
+        music = null;
+        btn.innerText = '🎻 Müziği Başlat';
+        playing = false;
+      }
     });
-  } else {
-    music.pause();
-    btn.innerText = '🎻 Müziği Başlat';
-    playing = false;
-  }
-}
-</script>
+  </script>
+
+</body>
+</html>
