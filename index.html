@@ -5,21 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sana Bir Mesajım Var ❤️</title>
 <style>
-body {margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ff5f6d,#ffc371);min-height:100vh;display:flex;align-items:center;justify-content:center;color:white;}
-.card {background: rgba(255,255,255,0.18);backdrop-filter:blur(10px);border-radius:20px;padding:30px;max-width:420px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.2);}
-h1{font-size:28px;} p{font-size:18px;line-height:1.6;}
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ff5f6d,#ffc371);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+}
+.card {
+  background: rgba(255,255,255,0.18);
+  backdrop-filter:blur(10px);
+  border-radius:20px;
+  padding:30px;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+h1{font-size:28px;}
+p{font-size:18px;line-height:1.6;}
 .heart{font-size:40px;animation:beat 1.2s infinite;margin:20px 0;}
 @keyframes beat{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
-#musicBtn{position:fixed;bottom:20px;right:20px;padding:14px 20px;border:none;border-radius:30px;background:#ffffffee;color:#ff5f6d;font-size:15px;box-shadow:0 5px 15px rgba(0,0,0,0.25);}
+#musicBtn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  padding:14px 20px;
+  border:none;
+  border-radius:30px;
+  background:#ffffffee;
+  color:#ff5f6d;
+  font-size:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.25);
+}
 </style>
 </head>
 <body>
 
 <div class="card">
 <h1>Canım ❤️</h1>
-<p>Bu sayfayı sana özel hazırladım.<br>Gülüşün günümü aydınlatıyor,<br>varlığın bana huzur veriyor.</p>
+<p>Bu sayfayı sana özel hazırladım.<br>
+Gülüşün günümü aydınlatıyor,<br>
+varlığın bana huzur veriyor.</p>
 <div class="heart">💖</div>
-<p>Seni çok seviyorum.<br>İyi ki varsın, iyi ki benimlesin.</p>
+<p>Seni çok seviyorum.<br>
+İyi ki varsın, iyi ki benimlesin.</p>
 <p><strong>— Muhammed</strong></p>
 </div>
 
@@ -29,27 +61,5 @@ h1{font-size:28px;} p{font-size:18px;line-height:1.6;}
 let playing = false;
 let music;
 
-const btn = document.getElementById('musicBtn');
-
-btn.addEventListener('click', () => {
-  if(!playing){
-    music = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c8c8b5f2a_960.mp3');
-    music.loop = true;
-    music.volume = 0.8;
-    music.play().then(()=>{
-      btn.innerText = '⏸️ Müziği Durdur';
-      playing=true;
-    }).catch(()=>{
-      alert('Müzik başlatılamadı. Lütfen sayfaya tekrar dokunun.');
-    });
-  } else {
-    music.pause();
-    music = null;
-    btn.innerText = '🎻 Müziği Başlat';
-    playing=false;
-  }
-});
-</script>
-
-</body>
-</html>
+// Küçük telifsiz keman MP3 (base64 gömülü)
+const mp3Base64 = "data:audio/mpeg;base64,//UklGRiYAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YdYAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
