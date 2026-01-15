@@ -3,22 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Senin İçin Bir Şarkı ❤️</title>
+<title>Senin İçin Bir Uzay Mesajı ❤️</title>
 <style>
-  body { margin:0; font-family:Arial,sans-serif; background:#000; color:#fff; text-align:center; padding-top:50px;}
-  #musicBtn { padding:15px 25px; font-size:18px; background:#ff5f6d; color:white; border:none; border-radius:8px; cursor:pointer;}
-  #ytPlayer { display:none; }
+/* Arka plan: uzay + yıldız animasyonu */
+body {
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  font-family: 'Arial', sans-serif;
+  color:white;
+  background:#000;
+}
+
+canvas {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+/* Mesaj kartı */
+.card {
+  position:relative;
+  z-index:1;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  border-radius:20px;
+  padding:30px;
+  max-width:450px;
+  margin:auto;
+  top:50px;
+  text-align:center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+h1 { font-size:32px; margin-bottom:10px; }
+p { font-size:18px; line-height:1.6; margin:10px 0; }
+.heart { font-size:50px; animation:beat 1.2s infinite; margin:20px 0; }
+@keyframes beat { 0%,100% { transform:scale(1); } 50% { transform:scale(1.3); } }
+
+/* Buton */
+#musicBtn {
+  margin-top:15px;
+  padding:14px 25px;
+  font-size:18px;
+  background:#ff5f6d;
+  color:white;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
 </style>
 </head>
 <body>
 
+<canvas id="stars"></canvas>
+
+<div class="card">
 <h1>Canım ❤️</h1>
-<p>Senin için çalan şarkı:</p>
+<p>Evren ne kadar büyük olsa da<br>
+senin yanındayken her şey tamam.<br>
+Yıldızlar kadar parlak gülüşün,<br>
+kalbimde sonsuz bir ışık bırakıyor.</p>
+<div class="heart">💖</div>
+<p>Seni çok seviyorum, benimle kaybolmaya var mısın?</p>
 <button id="musicBtn">🎵 Şarkıyı Çal</button>
+</div>
 
 <div id="ytPlayer"></div>
 
 <script>
+// Yıldız animasyonu
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+for(let i=0;i<200;i++){
+  stars.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*1.5+0.5,
+    dx: (Math.random()-0.5)*0.2,
+    dy: (Math.random()-0.5)*0.2
+  });
+}
+
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = 'white';
+  for(let s of stars){
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fill();
+    s.x += s.dx;
+    s.y += s.dy;
+    if(s.x<0) s.x=canvas.width;
+    if(s.x>canvas.width) s.x=0;
+    if(s.y<0) s.y=canvas.height;
+    if(s.y>canvas.height) s.y=0;
+  }
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+
 // YouTube API yükle
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -26,11 +118,10 @@ document.body.appendChild(tag);
 
 let player;
 let playing = false;
-
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('ytPlayer', {
     height: '0', width: '0',
-    videoId: 'b1bsO_EwAPY',  // Kaan Boşnak - Benimle Kayboldun resmi video ID’si :contentReference[oaicite:1]{index=1}
+    videoId: 'b1bsO_EwAPY', // Kaan Boşnak - Benimle Kayboldun
     playerVars: { autoplay: 0, controls: 0 }
   });
 }
