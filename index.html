@@ -59,13 +59,13 @@ varlığın bana huzur veriyor.</p>
 
 <script>
 const btn = document.getElementById("musicBtn");
-const music = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_9aa21b8a2f.mp3?filename=romantic-violin-10728.mp3");
+const music = new Audio("music.mp3"); // repo içindeki MP3
 music.loop = true;
 let playing = false;
 
 btn.addEventListener("click", () => {
     if(!playing){
-        music.play(); // direkt tetikleme, mobil uyumlu
+        music.play(); // mobil ve masaüstü uyumlu
         playing = true;
         btn.textContent = "🎻 Müziği Durdur";
     } else {
