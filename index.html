@@ -59,31 +59,38 @@
     <p><strong>— Muhammed</strong></p>
   </div>
 
-  <!-- GARANTİ ÇALIŞAN KEMAN MÜZİĞİ -->
+  <!-- Müzik Butonu ve YouTube Arka Plan Sesi -->
   <button id="musicBtn">🎻 Müziği Başlat</button>
+  <div id="ytPlayer"></div>
 
   <script>
+    let player;
     let playing = false;
-    let music;
 
-    const btn = document.getElementById('musicBtn');
+    // YouTube Iframe API ekle
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
 
-    btn.addEventListener('click', () => {
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytPlayer', {
+        height: '0',
+        width: '0',
+        videoId: 'lJIrF4YjHfQ', // Romantik keman videosu
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          loop: 1,
+          playlist: 'lJIrF4YjHfQ'
+        }
+      });
+    }
+
+    document.getElementById('musicBtn').addEventListener('click', () => {
       if (!playing) {
-        music = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c8c8b5f2a_960.mp3');
-        music.loop = true;
-        music.volume = 0.8;
-        music.play();
-        btn.innerText = '⏸️ Müziği Durdur';
+        player.playVideo();
+        document.getElementById('musicBtn').innerText = '⏸️ Müziği Durdur';
         playing = true;
       } else {
-        music.pause();
-        music = null;
-        btn.innerText = '🎻 Müziği Başlat';
-        playing = false;
-      }
-    });
-  </script>
-
-</body>
-</html>
+        player.pauseVideo();
+        document.getElementById('musicBtn').innerText = '🎻 Müziği Başl
