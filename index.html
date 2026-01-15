@@ -5,16 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sana Bir Mesajım Var ❤️</title>
 <style>
-body {
-  margin:0; font-family:Arial, sans-serif;
-  background: linear-gradient(135deg, #ff5f6d, #ffc371);
-  min-height:100vh; display:flex; align-items:center; justify-content:center; color:white;
-}
-.card { background: rgba(255,255,255,0.18); backdrop-filter: blur(10px); border-radius:20px; padding:30px; max-width:420px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,0.2);}
-h1{font-size:28px;} p{font-size:18px; line-height:1.6;}
-.heart{font-size:40px; animation:beat 1.2s infinite; margin:20px 0;}
+body {margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ff5f6d,#ffc371);min-height:100vh;display:flex;align-items:center;justify-content:center;color:white;}
+.card {background: rgba(255,255,255,0.18);backdrop-filter:blur(10px);border-radius:20px;padding:30px;max-width:420px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.2);}
+h1{font-size:28px;} p{font-size:18px;line-height:1.6;}
+.heart{font-size:40px;animation:beat 1.2s infinite;margin:20px 0;}
 @keyframes beat{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
-#musicBtn{position:fixed; bottom:20px; right:20px; padding:14px 20px; border:none; border-radius:30px; background:#ffffffee; color:#ff5f6d; font-size:15px; box-shadow:0 5px 15px rgba(0,0,0,0.25);}
+#musicBtn{position:fixed;bottom:20px;right:20px;padding:14px 20px;border:none;border-radius:30px;background:#ffffffee;color:#ff5f6d;font-size:15px;box-shadow:0 5px 15px rgba(0,0,0,0.25);}
 </style>
 </head>
 <body>
@@ -28,35 +24,28 @@ h1{font-size:28px;} p{font-size:18px; line-height:1.6;}
 </div>
 
 <button id="musicBtn">🎻 Müziği Başlat</button>
-<div id="ytPlayer"></div>
 
 <script>
-let player;
 let playing = false;
+let music;
 
-// YouTube API yükle
-const tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-document.body.appendChild(tag);
+const btn = document.getElementById('musicBtn');
 
-// Player hazır olduğunda oluştur
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('ytPlayer', {
-    height: '0',
-    width: '0',
-    videoId: 'lJIrF4YjHfQ', // Romantik keman videosu
-    playerVars: { autoplay:0, controls:0, loop:1, playlist:'lJIrF4YjHfQ' }
-  });
-}
-
-document.getElementById('musicBtn').addEventListener('click', () => {
+btn.addEventListener('click', () => {
   if(!playing){
-    player.playVideo();
-    document.getElementById('musicBtn').innerText='⏸️ Müziği Durdur';
-    playing=true;
+    music = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c8c8b5f2a_960.mp3');
+    music.loop = true;
+    music.volume = 0.8;
+    music.play().then(()=>{
+      btn.innerText = '⏸️ Müziği Durdur';
+      playing=true;
+    }).catch(()=>{
+      alert('Müzik başlatılamadı. Lütfen sayfaya tekrar dokunun.');
+    });
   } else {
-    player.pauseVideo();
-    document.getElementById('musicBtn').innerText='🎻 Müziği Başlat';
+    music.pause();
+    music = null;
+    btn.innerText = '🎻 Müziği Başlat';
     playing=false;
   }
 });
